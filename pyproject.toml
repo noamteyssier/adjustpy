@@ -4,11 +4,15 @@ build-backend = "maturin"
 
 [project]
 name = "adjustpy"
+authors = [{ name = "Noam Teyssier", email = "noam.teyssier@ucsf.edu" }]
+readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
+    "License :: OSI Approved :: MIT License"
 ]
 dependencies = [
   "numpy>=1.17.0"
@@ -17,3 +21,6 @@ dependencies = [
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
+
+[project.urls]
+Source = "https://github.com/noamteyssier/adjustpy"
