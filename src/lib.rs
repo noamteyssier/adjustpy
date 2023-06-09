@@ -1,6 +1,6 @@
 use adjustp::Procedure;
-use numpy::{PyArray1, IntoPyArray, PyReadonlyArrayDyn};
-use pyo3::{prelude::*, exceptions::PyValueError};
+use numpy::{IntoPyArray, PyArray1, PyReadonlyArrayDyn};
+use pyo3::{exceptions::PyValueError, prelude::*};
 
 /// Adjust p-values using the specified method.
 ///
@@ -9,9 +9,9 @@ use pyo3::{prelude::*, exceptions::PyValueError};
 /// * `method` - A string representing the method used (options = "bh", "by", "bonferroni", "benjamini-hochberg", "benjamini-yekutieli").
 #[pyfunction]
 fn adjust<'py>(
-    py: Python<'py>, 
-    pvalues: PyReadonlyArrayDyn<f64>, 
-    method: &str
+    py: Python<'py>,
+    pvalues: PyReadonlyArrayDyn<f64>,
+    method: &str,
 ) -> PyResult<&'py PyArray1<f64>> {
     let procedure = match method {
         "bh" => Procedure::BenjaminiHochberg,
