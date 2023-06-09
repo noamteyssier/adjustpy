@@ -19,7 +19,7 @@ fn adjust<'py>(
         "bonferroni" => Procedure::Bonferroni,
         "benjamini-hochberg" => Procedure::BenjaminiHochberg,
         "benjamini-yekutieli" => Procedure::BenjaminiYekutieli,
-        _ => return Err(PyValueError::new_err("Unknown method name provided")),
+        _ => return Err(PyValueError::new_err("Unknown method name provided. Provide one of {'bh', 'by', 'bonferroni', 'benjamini-hochberg', 'benjamini-yekutieli'}")),
     };
     let slice = pvalues.as_slice().unwrap();
     let qvalues = adjustp::adjust(slice, procedure);
